@@ -1,0 +1,51 @@
+.logo-style{
+    height: 7em;
+}
+
+/* ----------------------------------------------------------------------------------------
+* Custom CSS For DR.GOPIS
+* ---------------------------------------------------------------------------------------- */
+
+.background-image {
+	background-image: url('./../images/drg/background_leaves.png');
+	background-size: cover; /* Ensures the image covers the entire div */
+	background-repeat: no-repeat; /* Prevents the image from repeating */
+	background-position: center; /* Centers the image within the div */
+	background-attachment: fixed;
+  }
+
+.home-banner-p {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.v1-hr {
+    border-top: 5px solid #555436;
+    border-radius: 5px;
+    margin-left: 6em;
+    margin-right: 7em;
+}
+
+/* .book-border {
+    border: 2px solid #555436;
+} */
+
+
+.whats-app {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 3px 4px 3px #999;
+    right: 15px;
+    z-index: 100;
+}
+
+.my-float {
+    margin-top: 10px;
+}
