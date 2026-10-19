@@ -374,11 +374,8 @@
 (function() {
 	var nav = document.getElementById('header-nav'),
 		anchor = nav.getElementsByTagName('a'),
-		current = window.location.pathname.split('/')[1];
-		if( "" === current) {
-			nav.className = "navbar navbar-expand-lg background-image";
-		}
-		if( "index.php" == current) {
+		current = window.location.pathname.split('/').pop();
+		if ("" === current || "index.html" === current || "index.php" === current) {
 			nav.className = "navbar navbar-expand-lg background-image";
 		}
 		console.log(current);
