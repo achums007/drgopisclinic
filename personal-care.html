@@ -72,6 +72,7 @@
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+							<li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
                                 <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
                                 <li class="nav-item highlighted-menu"><a class="nav-link" href="appointment.html">book appointment</a></li>                               
                             </ul>
@@ -115,34 +116,10 @@
     <!-- Page Blog Start -->
     <div class="page-blog">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 book-border">
-                    <!-- Blog Item Start -->
-                    <div class="blog-item wow fadeInUp">
-                        <!-- Post Featured Image Start-->
-                        <div class="" data-cursor-text="View">
-                            <figure>
-                                <a href="#" class="image-anime">
-                                    <img src="images/drg/personalcare/p1.png" alt="">
-                                </a>
-                            </figure>
-                        </div>
-                        <!-- Post Featured Image End -->
-
-                        <!-- post Item Body Start -->
-                        <div class="post-item-body">
-                            <h2><a href="#">KARTHI HERBAL HAIR CARE OIL-100 ML</a></h2>
-                            <p>
-                                For hair loss, hair growth, premature grey hair, dandruff.<br>
-                                Content: Extract of Amla, Arnica Montana, Brahmi, Joaborandi, Eclypta alba, Aloe vera, Thuja occidentalis, Ceonanthus, Neela Amari, Moringa olifera, Armoracia sativa and coconut oil.
-                            </p><br>
-                            <h2>Price: INR 200 (INDIA), 25 US Dollars </h2>
-                        </div>
-                        <!-- Post Item Body End-->
-                    </div>
-                    <!-- Blog Item End -->
+            <div class="row" id="dynamic-products-wrapper">
+                <div class="col-12 text-center py-5">
+                    <p class="text-muted">Loading products from database...</p>
                 </div>
-
             </div>
 
             <div class="row">
@@ -253,7 +230,9 @@
     <script src="js/wow.js"></script>
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
-    <script src="../../assets/js/theme-panel.js"></script>
-
+    <!-- Dynamic Data Client -->
+    <script src="js/config.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/public-dynamic.js"></script>
 </body>
 </html>

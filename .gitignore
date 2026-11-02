@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+
+# Sensitive Environment & Credential Files (NEVER commit to Git)
+.env
+.env.local
+.env.*.local
+api/.env
+api/.env.local
+api/config.local.php

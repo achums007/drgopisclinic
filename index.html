@@ -72,6 +72,7 @@
 								</ul>
 							</li>
 							<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+							<li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
                                 <!-- <li class="nav-item submenu"><a class="nav-link" href="#">Pages</a>
                                     <ul>                                        
                                         <li class="nav-item"><a class="nav-link" href="service-single.php">Service Details</a></li>
@@ -529,7 +530,7 @@
                     <!-- Testimonial Slider Start -->
 					<div class="testimonial-slider">
 						<div class="swiper">
-							<div class="swiper-wrapper" data-cursor-text="Drag">
+							<div class="swiper-wrapper" id="dynamic-testimonials-wrapper" data-cursor-text="Drag">
 								<!-- Testimonial Slide Start -->
 								<div class="swiper-slide">
 									<div class="testimonial-item">	
@@ -694,6 +695,50 @@
     </div>
     <!-- Our Testiminial End -->
 
+    <!-- Featured Books Section Start -->
+    <div class="our-service" style="padding: 80px 0; background-color: #f7faf8;">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Publications</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Authored Books by</span> Dr. K.S. Gopi</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Internationally acclaimed homeopathic clinical guides, prescriber treatises, and medical references.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end mb-4 mb-lg-0">
+                    <a href="books.html" class="btn-default">View All Books</a>
+                </div>
+            </div>
+            <div class="row" id="dynamic-home-books-wrapper">
+                <!-- Dynamically rendered via local PHP MySQL API -->
+            </div>
+        </div>
+    </div>
+    <!-- Featured Books Section End -->
+
+    <!-- Featured Products Section Start -->
+    <div class="our-service" style="padding: 80px 0;">
+        <div class="container">
+            <div class="row section-row align-items-center">
+                <div class="col-lg-8">
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Clinic Formulations</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque"><span>Featured</span> Personal Care</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.25s">Herbal hair oils, skin care formulations, and therapeutic personal remedies prescribed at Dr. Gopi's Clinic.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end mb-4 mb-lg-0">
+                    <a href="personal-care.html" class="btn-default">View All Products</a>
+                </div>
+            </div>
+            <div class="row" id="dynamic-home-products-wrapper">
+                <!-- Dynamically rendered via local PHP MySQL API -->
+            </div>
+        </div>
+    </div>
+    <!-- Featured Products Section End -->
+
     <!-- Our Blog Start -->
      <div class="our-blog">
         <div class="container">
@@ -709,7 +754,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="dynamic-articles-wrapper">
                 <div class="col-lg-4 col-md-6">
                     <!-- Blog Item Start -->
                     <div class="blog-item wow fadeInUp">
@@ -1009,7 +1054,11 @@
     <script src="js/wow.js"></script>
     <!-- Main Custom js file -->
     <script src="js/function.js"></script>
-    <script src="../../assets/js/theme-panel.js"></script>
+    <!-- Dynamic Data Client -->
+    <script src="js/config.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/public-dynamic.js"></script>
 
 </body>
 </html>
+

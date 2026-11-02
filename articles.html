@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Read clinical homeopathic health articles and condition management guides by Dr. K.S. Gopi (BSc, BHMS, MD).">
+	<meta name="keywords" content="Homeopathy, Health Articles, Trigger Finger, Back Pain, Indigestion, Dr Gopi Clinic">
+	<meta name="author" content="Dr. Gopi's Clinic">
+	<!-- Page Title -->
+    <title>Health Articles & Clinical Guides - Dr Gopi's Clinic</title>
+	<!-- Favicon Icon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/drg/logo.png">
+	<!-- Google Fonts Css-->
+	<link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+	<!-- Bootstrap Css -->
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<!-- SlickNav Css -->
+	<link href="css/slicknav.min.css" rel="stylesheet">
+	<!-- Swiper Css -->
+	<link rel="stylesheet" href="css/swiper-bundle.min.css">
+	<!-- Font Awesome Icon Css-->
+	<link href="css/all.css" rel="stylesheet" media="screen">
+	<!-- Animated Css -->
+	<link href="css/animate.css" rel="stylesheet">
+	<!-- Magnific Popup Core Css File -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- Mouse Cursor Css File -->
+	<link rel="stylesheet" href="css/mousecursor.css">
+	<!-- Main Custom Css -->
+	<link href="css/custom.css" rel="stylesheet" media="screen">
+	<link href="css/mycss.css" rel="stylesheet" media="screen">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <!-- Preloader Start -->
+	<div class="preloader">
+		<div class="loading-container">
+			<div class="loading"></div>
+			<div id="loading-icon"><img src="images/drg/logo.png" alt="Loading"></div>
+		</div>
+	</div>
+	<!-- Preloader End -->
+
+    <!-- Header Start -->
+	<header class="main-header">
+		<div class="header-sticky">
+			<nav class="navbar navbar-expand-lg" id="header-nav">
+				<div class="container">
+					<!-- Logo Start -->
+					<a class="navbar-brand" href="index.html">
+						<img class="logo-style" src="images/drg/logo.png" alt="Dr Gopi's Clinic">
+					</a>
+					<!-- Logo End -->
+
+					<!-- Main Menu Start -->
+					<div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav mr-auto" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>                                
+                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                                <li class="nav-item submenu"><a class="nav-link" href="#">Products</a>
+									<ul>                                        
+										<li class="nav-item"><a class="nav-link" href="personal-care.html">Personal Care</a></li>
+										<li class="nav-item"><a class="nav-link" href="books.html">Books</a></li>
+									</ul>
+								</li>
+								<li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+								<li class="nav-item active"><a class="nav-link" href="articles.html">Articles</a></li>
+                                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                                <li class="nav-item highlighted-menu"><a class="nav-link" href="appointment.html">book appointment</a></li>                               
+                            </ul>
+                        </div>
+					</div>
+					<!-- Main Menu End -->
+					<div class="navbar-toggle"></div>
+				</div>
+			</nav>
+			<div class="responsive-menu"></div>
+		</div>
+	</header>
+
+	<a class="whats-app" href="https://wa.me/919207011814" target="_blank">
+    	<i class="fa fa-whatsapp my-float"></i>
+	</a>
+
+    <!-- Page Header Start -->
+	<div class="page-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="page-header-box">
+						<h1 class="text-anime-style-2" data-cursor="-opaque"><span>Health Articles &</span> Clinical Guides</h1>
+						<nav class="wow fadeInUp">
+							<ol class="breadcrumb">
+								<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+								<li class="breadcrumb-item active" aria-current="page">Articles</li>
+							</ol>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page Header End -->
+
+    <!-- Page Articles Start -->
+    <div class="page-blog py-5">
+        <div class="container">
+			<!-- Search & Filter Bar -->
+			<div class="row mb-5 justify-content-center">
+				<div class="col-lg-6 col-md-8">
+					<div class="input-group" style="box-shadow: 0 4px 15px rgba(0,0,0,0.06); border-radius: 30px; overflow: hidden; background: #fff; padding: 4px 12px; border: 1px solid #e2e8f0;">
+						<input type="text" id="article-search-input" class="form-control border-0" placeholder="Search disease, symptom, or condition..." style="outline: none; box-shadow: none; font-size: 14px;">
+						<span class="input-group-text bg-transparent border-0" style="color: #0b5e54;"><i class="fa fa-search"></i></span>
+					</div>
+				</div>
+			</div>
+
+            <!-- Dynamic Articles Wrapper (Fetched live from MySQL) -->
+            <div class="row" id="dynamic-articles-page-wrapper">
+				<div class="col-12 text-center py-5">
+					<p class="text-muted">Loading health articles...</p>
+				</div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Articles End -->
+
+    <!-- Footer Start -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="about-footer">
+                        <div class="footer-logo">
+                            <img src="images/drg/footer-logo.png" alt="Dr Gopi's Clinic">
+                        </div>
+                        <div class="about-footer-content">
+                            <p>Dr. Gopi's Clinic offers holistic homeopathic care, combining decades of expertise with modern treatments for comprehensive patient well-being.</p>
+                         </div>
+                     </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+					<div class="footer-links">
+                        <h3>quick links</h3>
+                        <ul>
+                            <li><a href="index.html">home</a></li>
+                            <li><a href="about.html">about us</a></li>
+                            <li><a href="services.html">services</a></li>
+                            <li><a href="books.html">books</a></li>
+							<li><a href="articles.html">articles</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="footer-links footer-contact-links">
+                        <h3>contact us</h3>
+                        <ul>                            
+                            <li><a href="#"> plantmedicines@yahoo.com</a></li>
+                            <li><a href="#">+919207011814</a></li>
+                        </ul>
+                    </div>
+                </div>                
+            </div>
+
+            <!-- Footer Copyright Section Start -->
+            <div class="footer-copyright">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-copyright-text">
+                            <p>Copyright © 2026 Dr. Gopi's Clinic. All Rights Reserved.</p>
+							<p class="mt-2"><a href="admin/index.html" style="font-size: 11px; color: #888; text-decoration: none;">🔐 Admin Portal (CMS)</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Jquery Library File -->
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/SmoothScroll.js"></script>
+    <script src="js/parallaxie.js"></script>
+    <script src="js/gsap.min.js"></script>
+    <script src="js/magiccursor.js"></script>
+    <script src="js/SplitText.js"></script>
+    <script src="js/ScrollTrigger.min.js"></script>
+    <script src="js/jquery.mb.YTPlayer.min.js"></script>
+    <script src="js/wow.js"></script>
+    <script src="js/function.js"></script>
+	<!-- Dynamic Client Scripts -->
+	<script src="js/config.js"></script>
+	<script src="js/api-client.js"></script>
+	<script src="js/public-dynamic.js"></script>
+</body>
+</html>
