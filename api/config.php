@@ -1,6 +1,6 @@
 <?php
 /**
- * Dr. Gopi's Clinic - GoDaddy MySQL & API Configuration
+ * Dr. Gopi's Clinic - MySQL & API Configuration
  * 
  * SECURITY BEST PRACTICE:
  * Database credentials should NEVER be hardcoded into files committed to GitHub.

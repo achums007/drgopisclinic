@@ -11,6 +11,12 @@ require_once __DIR__ . '/config.php';
 // Set response header to JSON for all API calls (except file download)
 header('Content-Type: application/json; charset=utf-8');
 
+// Disable any caching of API responses across all browsers and proxies
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Cache-Control: post-check=0, pre-check=0', false);
+header('Pragma: no-cache');
+header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
+
 // Disable error display in output to prevent JSON corruption; log errors instead
 ini_set('display_errors', '0');
 error_reporting(E_ALL);

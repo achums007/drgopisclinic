@@ -1,0 +1,22 @@
+# ------------------------------------------------------------------------
+# Root Web Server Configuration for Dr. Gopi's Clinic
+# ------------------------------------------------------------------------
+
+# Enable Rewrite Engine
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+</IfModule>
+
+# Force UTF-8 Default Charset
+AddDefaultCharset UTF-8
+
+# Prevent browser and proxy caching on HTML, JSON, and PHP files so live updates appear instantly
+<IfModule mod_headers.c>
+    <FilesMatch "\.(html|htm|php|json)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate, max-age=0"
+        Header set Pragma "no-cache"
+        Header set Expires "0"
+    </FilesMatch>
+</IfModule>

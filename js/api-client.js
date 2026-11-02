@@ -9,6 +9,25 @@ class ClinicApiClient {
     constructor() {
         this.tokenKey = 'drgopi_admin_token';
         this.cacheKeyPrefix = 'drgopi_local_data_';
+        this.clearDataCache(); // Wipe stale local cache immediately on every load
+    }
+
+    // Completely clear all stored data caches from localStorage & sessionStorage
+    clearDataCache() {
+        try {
+            Object.keys(localStorage).forEach(key => {
+                if (key.startsWith(this.cacheKeyPrefix)) {
+                    localStorage.removeItem(key);
+                }
+            });
+            Object.keys(sessionStorage).forEach(key => {
+                if (key.startsWith(this.cacheKeyPrefix)) {
+                    sessionStorage.removeItem(key);
+                }
+            });
+        } catch (e) {
+            console.warn('[ClinicApiClient] Could not clear cache:', e);
+        }
     }
 
     getBaseUrl() {
@@ -53,11 +72,18 @@ class ClinicApiClient {
         });
     }
 
-    // Core Request Handler
+    // Core Request Handler (Always bypasses cache)
     async request(action, options = {}) {
-        const url = `${this.getBaseUrl()}?action=${encodeURIComponent(action)}${options.params ? '&' + options.params : ''}`;
+        // Cache-buster: attach millisecond timestamp so browser/proxy never caches the response
+        const cacheBuster = `_nocache=${Date.now()}`;
+        const queryParams = options.params ? `${options.params}&${cacheBuster}` : cacheBuster;
+        const url = `${this.getBaseUrl()}?action=${encodeURIComponent(action)}&${queryParams}`;
+        
         const headers = {
             'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0',
             ...(options.headers || {})
         };
 
@@ -69,6 +95,7 @@ class ClinicApiClient {
 
         const fetchOptions = {
             method: options.method || 'GET',
+            cache: 'no-store', // Native fetch cache-bypass
             headers,
             ...(options.body ? { body: JSON.stringify(options.body) } : {})
         };

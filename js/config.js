@@ -18,7 +18,7 @@ function resolveClinicApiUrl() {
 }
 
 window.CLINIC_CONFIG = {
-    // Default GoDaddy PHP API bridge URL (resolved dynamically relative to current folder)
+    // Default PHP API bridge URL (resolved dynamically relative to current folder)
     DEFAULT_API_URL: resolveClinicApiUrl(),
     
     // Fallback Admin Passcode for local demo mode if API is unreachable

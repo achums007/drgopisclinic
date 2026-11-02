@@ -1,11 +1,16 @@
 /**
  * Dr. Gopi's Clinic - Public Dynamic Frontend Data Loader
  * 
- * Fetches dynamic data from the GoDaddy MySQL API bridge (with offline cache fallback)
+ * Fetches dynamic data from the MySQL API bridge (with offline cache fallback)
  * and renders products, books, articles, and patient testimonials with Base64 BLOB images.
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
+    // Clear any stale local data cache immediately on page load
+    if (window.clinicApi && typeof window.clinicApi.clearDataCache === 'function') {
+        window.clinicApi.clearDataCache();
+    }
+
     initDynamicNavigation();
 
     // 1. Home Page Dynamic Sections

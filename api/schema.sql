@@ -1,6 +1,6 @@
 -- ========================================================================
 -- Dr. Gopi's Clinic (drgopiclinic.com) - MySQL Database Schema
--- Compatible with GoDaddy MySQL / MariaDB (phpMyAdmin)
+-- Compatible with MySQL / MariaDB (phpMyAdmin)
 -- Note: All image/binary data is stored directly in MySQL as LONGBLOB
 -- ========================================================================
 

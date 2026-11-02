@@ -21,11 +21,25 @@ const state = {
 // 1. INITIALIZATION & AUTHENTICATION
 // ============================================================================
 document.addEventListener('DOMContentLoaded', async () => {
+    // Force clear all local data caches on admin load
+    if (window.clinicApi && typeof window.clinicApi.clearDataCache === 'function') {
+        window.clinicApi.clearDataCache();
+    }
     lucide.createIcons();
     initEventListeners();
     checkAuthStatus();
     checkApiHealth();
 });
+
+// Force Refresh Function to Evict Cache & Reload DB Data
+window.forceRefreshAll = async function() {
+    if (window.clinicApi && typeof window.clinicApi.clearDataCache === 'function') {
+        window.clinicApi.clearDataCache();
+    }
+    showToast('Clearing cache and fetching fresh records...');
+    await loadAllData();
+    showToast('Cache cleared! Fresh database records loaded.');
+};
 
 // Toast Notification Helper
 function showToast(message, type = 'success') {
@@ -156,8 +170,8 @@ async function checkApiHealth() {
         const ping = await window.clinicApi.ping();
         if (ping.success && ping.status === 'online') {
             if (pill) pill.className = 'flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 cursor-pointer';
-            if (text) text.textContent = 'GoDaddy MySQL Online';
-            if (loginBadge) loginBadge.textContent = 'GoDaddy MySQL Bridge Connected';
+            if (text) text.textContent = 'MySQL Database Online';
+            if (loginBadge) loginBadge.textContent = 'MySQL Bridge Connected';
         } else {
             setDemoStatus();
         }
@@ -1053,7 +1067,7 @@ function saveApiConfig() {
 async function testApiConnection() {
     const resultBox = document.getElementById('cfg-ping-result');
     resultBox.className = 'p-3 rounded-xl text-[11px] font-mono leading-relaxed bg-slate-100 text-slate-700 block';
-    resultBox.textContent = 'Pinging GoDaddy API bridge...';
+    resultBox.textContent = 'Pinging API bridge...';
 
     const testUrl = document.getElementById('cfg-api-url').value.trim();
     const startTime = performance.now();
@@ -1072,7 +1086,7 @@ async function testApiConnection() {
         }
     } catch (err) {
         resultBox.className = 'p-3 rounded-xl text-[11px] font-mono leading-relaxed bg-rose-50 text-rose-800 border border-rose-200 block';
-        resultBox.innerHTML = `❌ <strong>Cannot reach API endpoint</strong><br>${err.message}<br><small>Ensure api/api.php is uploaded to GoDaddy and database credentials in api/.env are correct.</small>`;
+        resultBox.innerHTML = `❌ <strong>Cannot reach API endpoint</strong><br>${err.message}<br><small>Ensure api/api.php is uploaded to the server and database credentials in api/.env are correct.</small>`;
     }
 }
 

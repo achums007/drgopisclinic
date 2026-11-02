@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------
-# GoDaddy Apache Web Server Configuration for Dr. Gopi's Clinic API Bridge
+# Apache Web Server Configuration for Dr. Gopi's Clinic API Bridge
 # ------------------------------------------------------------------------
 
 # Enable Rewrite Engine
@@ -41,3 +41,10 @@
 
 # Force UTF-8 Default Charset
 AddDefaultCharset UTF-8
+
+# Disable all caching on API endpoint
+<IfModule mod_headers.c>
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+</IfModule>
