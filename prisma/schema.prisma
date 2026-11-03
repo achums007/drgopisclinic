@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id              Int       @id @default(autoincrement())
+  title           String    @db.VarChar(255)
+  category        String?   @default("General") @db.VarChar(100)
+  price           Decimal?  @default(0.00) @db.Decimal(10, 2)
+  description     String?   @db.Text
+  image_data      Bytes?
+  image_mime_type String?   @default("image/png") @db.VarChar(50)
+  created_at      DateTime? @default(now()) @db.Timestamp(0)
+
+  @@map("products")
+}
+
+model Book {
+  id                Int       @id @default(autoincrement())
+  title             String    @db.VarChar(255)
+  price             Decimal?  @default(0.00) @db.Decimal(10, 2)
+  summary           String?   @db.Text
+  cover_image_data  Bytes?
+  cover_mime_type   String?   @default("image/png") @db.VarChar(50)
+  preview_file_data Bytes?
+  preview_mime_type String?   @default("application/pdf") @db.VarChar(50)
+  created_at        DateTime? @default(now()) @db.Timestamp(0)
+
+  @@map("books")
+}
+
+model Article {
+  id                  Int       @id @default(autoincrement())
+  title               String    @db.VarChar(255)
+  category            String?   @default("General Health") @db.VarChar(100)
+  content             String?   @db.Text
+  thumbnail_data      Bytes?
+  thumbnail_mime_type String?   @default("image/jpeg") @db.VarChar(50)
+  created_at          DateTime? @default(now()) @db.Timestamp(0)
+
+  @@map("articles")
+}
+
+model Testimonial {
+  id                Int       @id @default(autoincrement())
+  patient_name      String?   @db.VarChar(100)
+  location          String?   @db.VarChar(100)
+  condition_treated String?   @db.VarChar(255)
+  review_text       String?   @db.Text
+  is_published      Boolean?  @default(true)
+  created_at        DateTime? @default(now()) @db.Timestamp(0)
+
+  @@map("testimonials")
+}
