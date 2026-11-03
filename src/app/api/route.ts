@@ -390,14 +390,20 @@ export async function POST(req: NextRequest) {
       if (!body.title || !body.title.trim()) {
         return NextResponse.json({ success: false, error: 'Article title is required' }, { status: 400 });
       }
+      if (!body.category || !body.category.trim()) {
+        return NextResponse.json({ success: false, error: 'Article category is required' }, { status: 400 });
+      }
       if (!body.content || !body.content.trim()) {
         return NextResponse.json({ success: false, error: 'Article content is required' }, { status: 400 });
+      }
+      if (!body.thumbnail_data) {
+        return NextResponse.json({ success: false, error: 'Article thumbnail image is required' }, { status: 400 });
       }
       const thumb = parseDataUri(body.thumbnail_data);
       const article = await prisma.article.create({
         data: {
           title: body.title.trim(),
-          category: body.category || 'General Health',
+          category: body.category.trim(),
           content: body.content.trim(),
           thumbnail_data: thumb.buffer,
           thumbnail_mime_type: thumb.mimeType,

@@ -138,6 +138,20 @@ async function loadDynamicTestimonials() {
 // ----------------------------------------------------------------------------
 // 2. HOME: DYNAMIC LATEST ARTICLES
 // ----------------------------------------------------------------------------
+function getArticleThumbnailSrc(a) {
+    if (a.thumbnail_data) return a.thumbnail_data;
+    if (a.id === 1 || (a.title && a.title.toLowerCase().includes('trigger finger'))) {
+        return 'images/drg/hand_pain.jpg';
+    }
+    if (a.id === 2 || (a.title && a.title.toLowerCase().includes('back pain'))) {
+        return 'images/drg/back_pain.jpeg';
+    }
+    if (a.id === 3 || (a.title && a.title.toLowerCase().includes('indigestion'))) {
+        return 'images/drg/indigestion.jpg';
+    }
+    return 'images/drg/logo.png';
+}
+
 async function loadDynamicArticlesHome() {
     const wrapper = document.getElementById('dynamic-articles-wrapper');
     if (!wrapper) return;
@@ -154,7 +168,7 @@ async function loadDynamicArticlesHome() {
                     <div class="post-featured-image" data-cursor-text="Read">
                         <figure>
                             <a href="articles.html?id=${a.id}" class="image-anime">
-                                <img src="${a.thumbnail_data || 'images/drg/hand_pain.jpg'}" alt="${escapeHtml(a.title)}" style="height: 220px; width: 100%; object-fit: cover; border-radius: 12px 12px 0 0;">
+                                <img src="${getArticleThumbnailSrc(a)}" alt="${escapeHtml(a.title)}" onerror="this.src='images/drg/logo.png'" style="height: 220px; width: 100%; object-fit: cover; border-radius: 12px 12px 0 0;">
                             </a>
                         </figure>
                     </div>
@@ -563,7 +577,7 @@ async function loadDynamicArticlesPage() {
                 <div class="blog-item wow fadeInUp" data-wow-delay="${(idx % 3) * 0.2}s" style="height: 100%; display: flex; flex-direction: column; background: #fff; border-radius: 16px; border: 1px solid #eef0f2; box-shadow: 0 4px 20px rgba(0,0,0,0.03); overflow: hidden;">
                     <div class="post-featured-image" data-cursor-text="Read">
                         <figure>
-                            <img src="${a.thumbnail_data || 'images/drg/hand_pain.jpg'}" alt="${escapeHtml(a.title)}" style="height: 220px; width: 100%; object-fit: cover;">
+                            <img src="${getArticleThumbnailSrc(a)}" alt="${escapeHtml(a.title)}" onerror="this.src='images/drg/logo.png'" style="height: 220px; width: 100%; object-fit: cover;">
                         </figure>
                     </div>
                     <div class="post-item-body" style="flex: 1; padding: 25px;">
@@ -619,7 +633,8 @@ function openArticleReader(art) {
         });
     }
 
-    document.getElementById('pam-img').src = art.thumbnail_data || 'images/drg/hand_pain.jpg';
+    document.getElementById('pam-img').src = getArticleThumbnailSrc(art);
+    document.getElementById('pam-img').onerror = function() { this.src = 'images/drg/logo.png'; };
     document.getElementById('pam-category').textContent = art.category || 'Health Guide';
     document.getElementById('pam-title').textContent = art.title;
     document.getElementById('pam-content').textContent = art.content;

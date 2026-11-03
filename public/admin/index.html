@@ -601,8 +601,8 @@ Message: Doctor, you saved my life. I'm now free from all my symptoms..."></text
                         <input type="text" id="art-title" required class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none text-sm font-medium" placeholder="e.g. Homeopathy for Trigger Finger & Tendonitis">
                     </div>
                     <div>
-                        <label class="block font-semibold text-slate-700 mb-1 text-xs">Category</label>
-                        <input type="text" id="art-category" class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none text-sm" placeholder="e.g. Orthopedics, Chronic Pain">
+                        <label class="block font-semibold text-slate-700 mb-1 text-xs">Category *</label>
+                        <input type="text" id="art-category" required class="w-full p-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-brand-700 outline-none text-sm" placeholder="e.g. Orthopedics, Chronic Pain">
                     </div>
                 </div>
 
@@ -619,8 +619,8 @@ Message: Doctor, you saved my life. I'm now free from all my symptoms..."></text
 
                 <!-- Thumbnail & Actions -->
                 <div class="border-t border-slate-100 pt-4">
-                    <label class="block font-semibold text-slate-700 mb-1.5 text-xs">Article Thumbnail Image</label>
-                    <div class="flex flex-col sm:flex-row items-center gap-4 p-4 border-2 border-slate-200 border-dashed rounded-xl bg-slate-50">
+                    <label class="block font-semibold text-slate-700 mb-1.5 text-xs">Article Thumbnail Image *</label>
+                    <div id="art-thumb-dropzone" class="flex flex-col sm:flex-row items-center gap-4 p-4 border-2 border-slate-200 border-dashed rounded-xl bg-slate-50 transition">
                         <div id="art-thumb-preview-container" class="hidden shrink-0">
                             <img id="art-thumb-preview" src="" alt="Thumbnail" class="h-24 w-36 object-cover rounded-lg shadow-sm border border-slate-200">
                             <p id="art-thumb-info" class="text-[10px] text-slate-500 mt-1 text-center truncate max-w-[144px]"></p>
@@ -631,7 +631,7 @@ Message: Doctor, you saved my life. I'm now free from all my symptoms..."></text
                                 <span>Browse Article Thumbnail</span>
                                 <input id="art-thumb-input" type="file" accept="image/*" class="sr-only">
                             </label>
-                            <p class="text-[11px] text-slate-400 mt-1.5">Optional banner image • JPEG, PNG, WEBP automatically optimized before saving</p>
+                            <p class="text-[11px] text-slate-400 mt-1.5">JPEG, PNG, WEBP automatically optimized before saving</p>
                         </div>
                     </div>
                 </div>

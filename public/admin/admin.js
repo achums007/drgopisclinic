@@ -477,6 +477,13 @@ function initFileUploadHandlers() {
                 document.getElementById('art-thumb-preview').src = res.dataUri;
                 document.getElementById('art-thumb-info').textContent = `${file.name} (${(res.fileSize / 1024).toFixed(1)} KB)`;
                 document.getElementById('art-thumb-preview-container').classList.remove('hidden');
+                const dropzone = document.getElementById('art-thumb-dropzone');
+                if (dropzone) dropzone.classList.remove('border-rose-500', 'ring-2', 'ring-rose-200');
+                const modal = document.getElementById('modal-article');
+                if (modal && !modal.querySelector('.border-rose-500')) {
+                    const errBox = modal.querySelector('.modal-error-alert');
+                    if (errBox) errBox.classList.add('hidden');
+                }
             }
         });
     }
@@ -710,6 +717,20 @@ async function deleteBook(id) {
 // ============================================================================
 // 6. MODULE C: ARTICLE MANAGER
 // ============================================================================
+function getAdminArticleThumbSrc(a) {
+    if (a.thumbnail_data) return a.thumbnail_data;
+    if (a.id === 1 || (a.title && a.title.toLowerCase().includes('trigger finger'))) {
+        return '/images/drg/hand_pain.jpg';
+    }
+    if (a.id === 2 || (a.title && a.title.toLowerCase().includes('back pain'))) {
+        return '/images/drg/back_pain.jpeg';
+    }
+    if (a.id === 3 || (a.title && a.title.toLowerCase().includes('indigestion'))) {
+        return '/images/drg/indigestion.jpg';
+    }
+    return '/images/drg/logo.png';
+}
+
 function renderArticlesGrid() {
     const container = document.getElementById('articles-grid');
     if (!container) return;
@@ -722,10 +743,10 @@ function renderArticlesGrid() {
     container.innerHTML = state.articles.map(a => `
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition">
             <div class="relative h-44 bg-slate-100 overflow-hidden">
-                <img src="${a.thumbnail_data || '/images/drg/hand_pain.jpg'}" 
-                     alt="${a.title}" 
+                <img src="${getAdminArticleThumbSrc(a)}" 
+                     alt="${escapeHtml(a.title)}" 
                      class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                     onerror="this.src='/images/drg/hand_pain.jpg'">
+                     onerror="this.src='/images/drg/logo.png'">
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/90 text-brand-900 shadow-sm backdrop-blur-sm">
                     ${escapeHtml(a.category || 'Health Guide')}
                 </span>
@@ -763,9 +784,10 @@ function openArticleModal(art = null) {
         document.getElementById('art-title').value = art.title || '';
         document.getElementById('art-category').value = art.category || '';
         document.getElementById('art-content').value = art.content || '';
-        if (art.thumbnail_data) {
-            document.getElementById('art-thumb-preview').src = art.thumbnail_data;
-            document.getElementById('art-thumb-info').textContent = 'Current Article Thumbnail';
+        const currentThumb = art.thumbnail_data || (getAdminArticleThumbSrc(art) !== '/images/drg/logo.png' ? getAdminArticleThumbSrc(art) : null);
+        if (currentThumb) {
+            document.getElementById('art-thumb-preview').src = currentThumb;
+            document.getElementById('art-thumb-info').textContent = art.thumbnail_data ? 'Current Article Thumbnail' : 'Catalog Article Thumbnail';
             document.getElementById('art-thumb-preview-container').classList.remove('hidden');
         } else {
             document.getElementById('art-thumb-preview-container').classList.add('hidden');
@@ -1295,7 +1317,9 @@ function initFormHandlers() {
         clearModalError('modal-article');
 
         const title = document.getElementById('art-title').value.trim();
+        const category = document.getElementById('art-category').value.trim();
         const content = document.getElementById('art-content').value.trim();
+        const id = document.getElementById('art-id').value;
 
         const invalidFields = [];
         const missing = [];
@@ -1304,9 +1328,19 @@ function initFormHandlers() {
             invalidFields.push('art-title');
             missing.push('Article Title');
         }
+        if (!category) {
+            invalidFields.push('art-category');
+            missing.push('Category');
+        }
         if (!content) {
             invalidFields.push('art-content');
             missing.push('Article Content');
+        }
+
+        const existingThumb = id ? (state.articles.find(a => a.id === parseInt(id))?.thumbnail_data || (getAdminArticleThumbSrc({ id: parseInt(id) }) !== '/images/drg/logo.png')) : null;
+        if (!state.selectedArtThumbBase64 && !existingThumb) {
+            invalidFields.push('art-thumb-dropzone');
+            missing.push('Article Thumbnail Image');
         }
 
         if (invalidFields.length > 0) {
@@ -1314,13 +1348,12 @@ function initFormHandlers() {
             return;
         }
 
-        const id = document.getElementById('art-id').value;
         const btn = document.getElementById('btn-save-article');
         const originalText = btn.innerHTML;
 
         const payload = {
             title,
-            category: document.getElementById('art-category').value.trim() || 'General Health',
+            category,
             content
         };
 
