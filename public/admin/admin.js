@@ -488,9 +488,9 @@ function initFileUploadHandlers() {
 function getAdminProductImageSrc(p) {
     if (p.image_data) return p.image_data;
     if (p.id === 1 || (p.title && p.title.toLowerCase().includes('karthi'))) {
-        return '../images/drg/personalcare/p1.png';
+        return '/images/drg/personalcare/p1.png';
     }
-    return '../images/drg/logo.png';
+    return '/images/drg/logo.png';
 }
 
 function renderProductsTable() {
@@ -508,7 +508,7 @@ function renderProductsTable() {
                 <img src="${getAdminProductImageSrc(p)}" 
                      alt="${escapeHtml(p.title)}" 
                      class="h-12 w-12 object-cover rounded-lg border border-slate-200 bg-white shadow-sm"
-                     onerror="this.src='../images/drg/logo.png'">
+                     onerror="this.src='/images/drg/logo.png'">
             </td>
             <td class="py-3 px-4">
                 <p class="font-bold text-slate-900">${escapeHtml(p.title)}</p>
@@ -598,18 +598,18 @@ async function deleteProduct(id) {
 function getAdminBookCoverSrc(b) {
     if (b.cover_image_data) return b.cover_image_data;
     if (b.id === 1 || (b.title && b.title.toLowerCase().includes('easy prescriber'))) {
-        return '../images/drg/books/Book 1.png';
+        return '/images/drg/books/Book 1.png';
     }
     if (b.id === 2 || (b.title && b.title.toLowerCase().includes('skin'))) {
-        return '../images/drg/books/Book 2.png';
+        return '/images/drg/books/Book 2.png';
     }
     if (b.id === 3 || (b.title && b.title.toLowerCase().includes('tincture'))) {
-        return '../images/drg/books/Book 3.png';
+        return '/images/drg/books/Book 3.png';
     }
     if (b.id === 4 || (b.title && b.title.toLowerCase().includes('psychiatric'))) {
-        return '../images/drg/books/Book 4.png';
+        return '/images/drg/books/Book 4.png';
     }
-    return '../images/drg/logo.png';
+    return '/images/drg/logo.png';
 }
 
 function renderBooksTable() {
@@ -627,7 +627,7 @@ function renderBooksTable() {
                 <img src="${getAdminBookCoverSrc(b)}" 
                      alt="${escapeHtml(b.title)}" 
                      class="h-16 w-12 object-cover rounded-md border border-slate-200 bg-white shadow-sm"
-                     onerror="this.src='../images/drg/logo.png'">
+                     onerror="this.src='/images/drg/logo.png'">
             </td>
             <td class="py-3 px-4">
                 <p class="font-bold text-slate-900">${escapeHtml(b.title)}</p>
@@ -664,7 +664,7 @@ function openBookModal(book = null) {
         document.getElementById('book-title').value = book.title || '';
         document.getElementById('book-price').value = book.price || '';
         document.getElementById('book-summary').value = book.summary || '';
-        const currentCover = book.cover_image_data || (getAdminBookCoverSrc(book) !== '../images/drg/logo.png' ? getAdminBookCoverSrc(book) : null);
+        const currentCover = book.cover_image_data || (getAdminBookCoverSrc(book) !== '/images/drg/logo.png' ? getAdminBookCoverSrc(book) : null);
         if (currentCover) {
             document.getElementById('book-cover-preview').src = currentCover;
             document.getElementById('book-cover-info').textContent = book.cover_image_data ? 'Current Cover in Database' : 'Catalog Cover Image';
@@ -722,10 +722,10 @@ function renderArticlesGrid() {
     container.innerHTML = state.articles.map(a => `
         <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md transition">
             <div class="relative h-44 bg-slate-100 overflow-hidden">
-                <img src="${a.thumbnail_data || '../images/drg/hand_pain.jpg'}" 
+                <img src="${a.thumbnail_data || '/images/drg/hand_pain.jpg'}" 
                      alt="${a.title}" 
                      class="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                     onerror="this.src='../images/drg/hand_pain.jpg'">
+                     onerror="this.src='/images/drg/hand_pain.jpg'">
                 <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold bg-white/90 text-brand-900 shadow-sm backdrop-blur-sm">
                     ${escapeHtml(a.category || 'Health Guide')}
                 </span>
@@ -1221,7 +1221,7 @@ function initFormHandlers() {
             missing.push('Book Summary & Features');
         }
 
-        const existingCover = id ? (state.books.find(b => b.id === parseInt(id))?.cover_image_data || (getAdminBookCoverSrc({ id: parseInt(id) }) !== '../images/drg/logo.png')) : null;
+        const existingCover = id ? (state.books.find(b => b.id === parseInt(id))?.cover_image_data || (getAdminBookCoverSrc({ id: parseInt(id) }) !== '/images/drg/logo.png')) : null;
         if (!state.selectedBookCoverBase64 && !existingCover) {
             invalidFields.push('book-cover-dropzone');
             missing.push('Book Cover Image');
