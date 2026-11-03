@@ -67,9 +67,15 @@ export async function GET(req: NextRequest) {
   const id = searchParams.get('id') ? parseInt(searchParams.get('id')!, 10) : null;
 
   try {
-    // 1. Ping
+    // 1. Ping & Health Check
     if (action === 'ping') {
-      return NextResponse.json({ success: true, status: 'online', database: 'connected' });
+      try {
+        await prisma.$queryRawUnsafe('SELECT 1');
+        return NextResponse.json({ success: true, status: 'online', database: 'connected' });
+      } catch (dbErr: unknown) {
+        const error = dbErr instanceof Error ? dbErr.message : 'Database connection error';
+        return NextResponse.json({ success: true, status: 'warning', database: 'disconnected', error });
+      }
     }
 
     // 2. Dashboard Stats (Cached for 30s)
