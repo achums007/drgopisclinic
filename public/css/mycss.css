@@ -230,3 +230,344 @@ html, body {
         right: -6px;
     }
 }
+
+/* ============================================================================
+* Clinic Web App Showcase Section & Poster Card
+* ============================================================================ */
+.clinic-app-section {
+    position: relative;
+    padding: 85px 0 75px;
+    background: linear-gradient(180deg, #ffffff 0%, #f4f8f4 50%, #ffffff 100%);
+    overflow: hidden;
+    border-top: 1px solid rgba(16, 71, 56, 0.08);
+    border-bottom: 1px solid rgba(16, 71, 56, 0.08);
+}
+
+.clinic-app-section::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(48, 181, 30, 0.09) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.clinic-app-section::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.clinic-app-poster-card {
+    position: relative;
+    background: linear-gradient(135deg, #0b2214 0%, #163d23 100%);
+    border-radius: 26px;
+    padding: 14px;
+    box-shadow: 0 20px 50px rgba(16, 49, 26, 0.22);
+    border: 2px solid rgba(197, 160, 89, 0.45);
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    text-align: center;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.clinic-app-poster-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 60px rgba(16, 49, 26, 0.3);
+    border-color: rgba(197, 160, 89, 0.8);
+}
+
+.clinic-app-poster-inner {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: #08170e;
+}
+
+.clinic-app-poster-img {
+    width: 100%;
+    height: auto;
+    max-height: 560px;
+    object-fit: contain;
+    display: block;
+    border-radius: 20px;
+    transition: transform 0.4s ease;
+}
+
+.clinic-app-poster-card:hover .clinic-app-poster-img {
+    transform: scale(1.02);
+}
+
+.clinic-app-poster-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 26, 15, 0.65);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.clinic-app-poster-card:hover .clinic-app-poster-overlay {
+    opacity: 1;
+}
+
+.clinic-app-poster-overlay .btn-poster-action {
+    background: #c5a059;
+    color: #0e2716 !important;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.clinic-app-poster-overlay .btn-poster-action:hover {
+    background: #ffffff;
+    color: #104738 !important;
+    transform: scale(1.04);
+}
+
+.clinic-app-poster-footer {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 10px;
+}
+
+.clinic-app-poster-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #eed8a1;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.clinic-app-poster-zoom {
+    color: #eff7ec;
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.clinic-app-poster-zoom:hover {
+    color: #30b51e;
+}
+
+/* Feature Items on Right Side */
+.clinic-app-content .section-title {
+    margin-bottom: 24px;
+}
+
+.clinic-app-features {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.clinic-app-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: #ffffff;
+    padding: 16px 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(16, 71, 56, 0.1);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.clinic-app-feature-item:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 25px rgba(16, 71, 56, 0.08);
+    border-color: rgba(48, 181, 30, 0.4);
+}
+
+.clinic-app-feature-icon {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #18310a 0%, #2f6b1e 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    box-shadow: 0 4px 12px rgba(24, 49, 10, 0.18);
+}
+
+.clinic-app-feature-content h4 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #18310a;
+    margin: 0 0 4px 0;
+}
+
+.clinic-app-feature-content p {
+    font-size: 14px;
+    color: #4b6351;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.clinic-app-url-box {
+    background: #0e2716;
+    color: #eed8a1;
+    padding: 14px 20px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 22px 0;
+    border: 1px solid rgba(197, 160, 89, 0.35);
+}
+
+.clinic-app-url-text {
+    font-size: 13px;
+    color: #cbd5e1;
+}
+
+.clinic-app-url-text strong {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: Consolas, Monaco, monospace;
+    word-break: break-all;
+}
+
+.clinic-app-cta-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.btn-clinic-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #18310a 0%, #265515 100%);
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 26px;
+    border-radius: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 6px 20px rgba(24, 49, 10, 0.25);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-clinic-primary:hover {
+    background: linear-gradient(135deg, #30b51e 0%, #1e7a12 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(48, 181, 30, 0.35);
+    color: #ffffff !important;
+}
+
+.btn-clinic-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25d366;
+    color: #ffffff !important;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 13px 22px;
+    border-radius: 40px;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-clinic-whatsapp:hover {
+    background: #1eb954;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+    color: #ffffff !important;
+}
+
+.btn-clinic-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 2px solid #18310a;
+    color: #18310a !important;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 20px;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-clinic-outline:hover {
+    background: #18310a;
+    color: #ffffff !important;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 991px) {
+    .clinic-app-section {
+        padding: 60px 0;
+    }
+    .clinic-app-poster-card {
+        margin-bottom: 40px;
+    }
+    .clinic-app-cta-group {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 576px) {
+    .clinic-app-section {
+        padding: 45px 0;
+    }
+    .clinic-app-feature-item {
+        padding: 14px;
+    }
+    .clinic-app-feature-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        font-size: 16px;
+    }
+    .clinic-app-cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .clinic-app-cta-group a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}
